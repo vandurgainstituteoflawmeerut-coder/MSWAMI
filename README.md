@@ -8,11 +8,30 @@
 
 This repository is maintained by **Vandurga Institute of Law, Meerut**.
 
-> *Details about the MSWAMI project will be added here soon.*
+A simple web application is now available in the root of this repository.
+
+## Live App
+
+Once GitHub Pages is enabled, the app will be accessible at:
+
+**https://vandurgainstituteoflawmeerut-coder.github.io/MSWAMI/**
+
+### How to enable GitHub Pages (one-time setup)
+
+1. Go to the repository on GitHub  
+   → **Settings** → **Pages** (left sidebar)
+2. Under **Source**, select **Deploy from a branch**
+3. Choose branch: **main**
+4. Folder: **/ (root)**
+5. Click **Save**
+
+After a few seconds to a minute, the site will be live at the URL above.
 
 ## Repository Status
 
-This repository is currently under initial setup.
+- [x] README created
+- [x] Basic web app (`index.html`) added
+- [ ] GitHub Pages enabled (manual step required)
 
 ## Contributing
 
