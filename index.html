@@ -24,7 +24,6 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -37,7 +36,6 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* Navbar */
     .nav {
       position: sticky;
       top: 0;
@@ -82,6 +80,33 @@
       gap: 0.75rem;
     }
 
+    .user-chip {
+      display: none;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.75rem 0.4rem 0.5rem;
+      border-radius: 9999px;
+    }
+
+    .user-chip.show { display: flex; }
+
+    .user-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #0b1220;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -97,12 +122,18 @@
       font-family: inherit;
     }
 
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
     .btn-primary {
       background: linear-gradient(135deg, var(--primary), var(--primary-2));
       color: #0b1220;
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover:not(:disabled) {
       transform: translateY(-1px);
       box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.4);
     }
@@ -113,9 +144,19 @@
       color: var(--text);
     }
 
-    .btn-outline:hover {
+    .btn-outline:hover:not(:disabled) {
       border-color: var(--primary);
       color: var(--primary);
+    }
+
+    .btn-danger {
+      background: transparent;
+      border: 1px solid rgba(248, 113, 113, 0.4);
+      color: var(--danger);
+    }
+
+    .btn-danger:hover:not(:disabled) {
+      background: rgba(248, 113, 113, 0.1);
     }
 
     .btn-full {
@@ -124,7 +165,6 @@
       font-size: 0.95rem;
     }
 
-    /* Hero */
     .hero {
       max-width: 1100px;
       margin: 0 auto;
@@ -188,7 +228,6 @@
       justify-content: center;
     }
 
-    /* Sections */
     section {
       max-width: 1100px;
       margin: 0 auto;
@@ -208,7 +247,6 @@
       max-width: 520px;
     }
 
-    /* Cards grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -251,7 +289,6 @@
       font-size: 0.95rem;
     }
 
-    /* About */
     .about-box {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -261,11 +298,8 @@
       gap: 1.5rem;
     }
 
-    .about-box p {
-      color: var(--muted);
-    }
+    .about-box p { color: var(--muted); }
 
-    /* Contact */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -290,7 +324,6 @@
       font-size: 0.9rem;
     }
 
-    /* Footer */
     footer {
       border-top: 1px solid var(--border);
       margin-top: 2rem;
@@ -306,7 +339,7 @@
       display: inline-block;
     }
 
-    /* ===== Login Modal ===== */
+    /* Modal */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -369,7 +402,7 @@
 
     .modal-header {
       text-align: center;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
     }
 
     .modal-header .brand {
@@ -381,6 +414,34 @@
     .modal-header p {
       color: var(--muted);
       font-size: 0.9rem;
+    }
+
+    .auth-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--bg);
+      padding: 0.3rem;
+      border-radius: 10px;
+    }
+
+    .auth-tab {
+      flex: 1;
+      padding: 0.5rem;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+
+    .auth-tab.active {
+      background: var(--surface-2);
+      color: var(--text);
     }
 
     .form-group {
@@ -408,13 +469,8 @@
       transition: border-color 0.2s;
     }
 
-    .form-group input:focus {
-      border-color: var(--primary);
-    }
-
-    .form-group input::placeholder {
-      color: #64748b;
-    }
+    .form-group input:focus { border-color: var(--primary); }
+    .form-group input::placeholder { color: #64748b; }
 
     .form-row {
       display: flex;
@@ -437,9 +493,7 @@
       font-weight: 500;
     }
 
-    .form-row a:hover {
-      text-decoration: underline;
-    }
+    .form-row a:hover { text-decoration: underline; }
 
     .form-error {
       background: rgba(248, 113, 113, 0.12);
@@ -452,9 +506,7 @@
       display: none;
     }
 
-    .form-error.show {
-      display: block;
-    }
+    .form-error.show { display: block; }
 
     .form-success {
       background: rgba(34, 197, 94, 0.12);
@@ -467,9 +519,7 @@
       display: none;
     }
 
-    .form-success.show {
-      display: block;
-    }
+    .form-success.show { display: block; }
 
     .modal-footer {
       text-align: center;
@@ -478,18 +528,24 @@
       color: var(--muted);
     }
 
-    .modal-footer a {
-      color: var(--primary);
-      font-weight: 500;
+    .config-warning {
+      background: rgba(251, 191, 36, 0.12);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      color: #fbbf24;
+      font-size: 0.8rem;
+      padding: 0.75rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      line-height: 1.45;
+      display: none;
     }
 
-    .modal-footer a:hover {
-      text-decoration: underline;
-    }
+    .config-warning.show { display: block; }
 
     @media (max-width: 640px) {
       .nav-links { display: none; }
       .hero { padding-top: 3.5rem; }
+      .user-chip span { display: none; }
     }
   </style>
 </head>
@@ -504,8 +560,13 @@
         <a href="#contact">Contact</a>
       </div>
       <div class="nav-actions">
+        <div class="user-chip" id="userChip">
+          <div class="user-avatar" id="userAvatar">U</div>
+          <span id="userEmail"></span>
+        </div>
         <button type="button" class="btn btn-outline" id="loginBtn">Login</button>
-        <a href="#contact" class="btn btn-primary">Get Started</a>
+        <button type="button" class="btn btn-danger" id="logoutBtn" style="display:none;">Logout</button>
+        <a href="#contact" class="btn btn-primary" id="getStartedBtn">Get Started</a>
       </div>
     </div>
   </nav>
@@ -514,7 +575,7 @@
   <header class="hero">
     <div class="badge">Live & Accessible</div>
     <h1>Welcome to <span>MSWAMI</span></h1>
-    <p>
+    <p id="heroText">
       Official digital portal of <strong>Vandurga Institute of Law, Meerut</strong>.
       A modern platform designed to serve students, faculty, and the legal community.
     </p>
@@ -572,9 +633,9 @@
         <p>Fully responsive design that works smoothly on phones, tablets, and desktops.</p>
       </div>
       <div class="card">
-        <div class="card-icon">🔒</div>
-        <h3>Secure & Reliable</h3>
-        <p>Hosted on GitHub Pages for fast, secure, and always-available access.</p>
+        <div class="card-icon">🔐</div>
+        <h3>Secure Login</h3>
+        <p>Real authentication powered by Firebase. Sign in, register, and reset password securely.</p>
       </div>
     </div>
   </section>
@@ -603,36 +664,47 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="brand">MSWAMI</div>
     <p>© 2026 Vandurga Institute of Law, Meerut. All rights reserved.</p>
   </footer>
 
-  <!-- Login Modal -->
-  <div class="modal-overlay" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+  <!-- Auth Modal -->
+  <div class="modal-overlay" id="loginModal" role="dialog" aria-modal="true">
     <div class="modal">
       <button type="button" class="modal-close" id="closeModal" aria-label="Close">×</button>
 
       <div class="modal-header">
         <span class="brand">MSWAMI</span>
-        <p id="loginTitle">Sign in to your account</p>
+        <p id="modalSubtitle">Sign in to your account</p>
       </div>
 
-      <div class="form-error" id="formError">Please enter both email and password.</div>
+      <div class="config-warning" id="configWarning">
+        ⚠️ Firebase is not configured yet. Open <code>index.html</code>, replace the
+        <code>firebaseConfig</code> values with your project keys, then enable Email/Password
+        in the Firebase Console.
+      </div>
 
-      <form id="loginForm">
+      <div class="auth-tabs" id="authTabs">
+        <button type="button" class="auth-tab active" data-mode="login">Sign In</button>
+        <button type="button" class="auth-tab" data-mode="register">Register</button>
+      </div>
+
+      <div class="form-error" id="formError"></div>
+      <div class="form-success" id="formSuccess"></div>
+
+      <form id="authForm">
         <div class="form-group">
-          <label for="email">Email or Student ID</label>
-          <input type="text" id="email" name="email" placeholder="you@example.com" autocomplete="username" required />
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required />
         </div>
 
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required />
+          <input type="password" id="password" name="password" placeholder="Min. 6 characters" autocomplete="current-password" required minlength="6" />
         </div>
 
-        <div class="form-row">
+        <div class="form-row" id="loginExtras">
           <label>
             <input type="checkbox" id="remember" name="remember" />
             Remember me
@@ -640,82 +712,244 @@
           <a href="#" id="forgotLink">Forgot password?</a>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">Sign In</button>
       </form>
 
-      <div class="form-success" id="formSuccess">
-        ✓ Login successful!<br />
-        <span style="font-size: 0.85rem; opacity: 0.9;">Welcome to MSWAMI portal.</span>
-      </div>
-
-      <div class="modal-footer">
-        Don’t have an account? <a href="#" id="registerLink">Contact administration</a>
+      <div class="modal-footer" id="modalFooter">
+        New here? Switch to <strong>Register</strong> above.
       </div>
     </div>
   </div>
 
-  <script>
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js';
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      signOut,
+      onAuthStateChanged,
+      sendPasswordResetEmail,
+      setPersistence,
+      browserLocalPersistence,
+      browserSessionPersistence
+    } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js';
+
+    // ============================================================
+    // 🔧 REPLACE THESE VALUES WITH YOUR FIREBASE PROJECT CONFIG
+    // ============================================================
+    // 1. Go to https://console.firebase.google.com
+    // 2. Create a project (or open existing)
+    // 3. Add a Web app → copy the firebaseConfig object
+    // 4. Paste the values below
+    // 5. Enable Authentication → Sign-in method → Email/Password
+    // ============================================================
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const isConfigured = firebaseConfig.apiKey !== 'YOUR_API_KEY';
+
+    let app, auth;
+
+    if (isConfigured) {
+      app = initializeApp(firebaseConfig);
+      auth = getAuth(app);
+    }
+
+    // DOM
     const modal = document.getElementById('loginModal');
     const loginBtn = document.getElementById('loginBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
     const heroLoginBtn = document.getElementById('heroLoginBtn');
     const closeBtn = document.getElementById('closeModal');
-    const form = document.getElementById('loginForm');
+    const form = document.getElementById('authForm');
     const formError = document.getElementById('formError');
     const formSuccess = document.getElementById('formSuccess');
+    const configWarning = document.getElementById('configWarning');
+    const submitBtn = document.getElementById('submitBtn');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const loginExtras = document.getElementById('loginExtras');
+    const userChip = document.getElementById('userChip');
+    const userEmail = document.getElementById('userEmail');
+    const userAvatar = document.getElementById('userAvatar');
+    const getStartedBtn = document.getElementById('getStartedBtn');
+    const heroText = document.getElementById('heroText');
+
+    let mode = 'login'; // 'login' | 'register'
 
     function openModal() {
       modal.classList.add('open');
-      document.getElementById('email').focus();
-      form.style.display = 'block';
-      formSuccess.classList.remove('show');
       formError.classList.remove('show');
+      formSuccess.classList.remove('show');
       form.reset();
+      configWarning.classList.toggle('show', !isConfigured);
+      document.getElementById('email').focus();
     }
 
     function closeModal() {
       modal.classList.remove('open');
     }
 
+    function setMode(newMode) {
+      mode = newMode;
+      document.querySelectorAll('.auth-tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.mode === mode);
+      });
+      if (mode === 'login') {
+        modalSubtitle.textContent = 'Sign in to your account';
+        submitBtn.textContent = 'Sign In';
+        loginExtras.style.display = 'flex';
+      } else {
+        modalSubtitle.textContent = 'Create a new account';
+        submitBtn.textContent = 'Create Account';
+        loginExtras.style.display = 'none';
+      }
+      formError.classList.remove('show');
+      formSuccess.classList.remove('show');
+    }
+
+    function showError(msg) {
+      formError.textContent = msg;
+      formError.classList.add('show');
+      formSuccess.classList.remove('show');
+    }
+
+    function showSuccess(msg) {
+      formSuccess.innerHTML = msg;
+      formSuccess.classList.add('show');
+      formError.classList.remove('show');
+    }
+
+    function updateUI(user) {
+      if (user) {
+        loginBtn.style.display = 'none';
+        heroLoginBtn.style.display = 'none';
+        logoutBtn.style.display = 'inline-flex';
+        userChip.classList.add('show');
+        userEmail.textContent = user.email;
+        userAvatar.textContent = (user.email || 'U')[0].toUpperCase();
+        heroText.innerHTML = `Welcome back, <strong>${user.email}</strong>! You are signed in to the MSWAMI portal.`;
+      } else {
+        loginBtn.style.display = 'inline-flex';
+        heroLoginBtn.style.display = 'inline-flex';
+        logoutBtn.style.display = 'none';
+        userChip.classList.remove('show');
+        heroText.innerHTML = `Official digital portal of <strong>Vandurga Institute of Law, Meerut</strong>. A modern platform designed to serve students, faculty, and the legal community.`;
+      }
+    }
+
+    // Tabs
+    document.querySelectorAll('.auth-tab').forEach(tab => {
+      tab.addEventListener('click', () => setMode(tab.dataset.mode));
+    });
+
     loginBtn.addEventListener('click', openModal);
     heroLoginBtn.addEventListener('click', openModal);
     closeBtn.addEventListener('click', closeModal);
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
     });
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value;
+    // Auth state
+    if (isConfigured) {
+      onAuthStateChanged(auth, (user) => updateUI(user));
+    } else {
+      updateUI(null);
+    }
 
-      if (!email || !password) {
-        formError.textContent = 'Please enter both email and password.';
-        formError.classList.add('show');
+    // Submit
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!isConfigured) {
+        showError('Firebase is not configured. Please add your project keys first.');
         return;
       }
 
-      // Demo only — no real backend
-      formError.classList.remove('show');
-      form.style.display = 'none';
-      formSuccess.classList.add('show');
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const remember = document.getElementById('remember').checked;
 
-      // Auto-close after 2 seconds
-      setTimeout(closeModal, 2000);
+      if (!email || !password) {
+        showError('Please enter email and password.');
+        return;
+      }
+
+      if (password.length < 6) {
+        showError('Password must be at least 6 characters.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = mode === 'login' ? 'Signing in…' : 'Creating account…';
+
+      try {
+        await setPersistence(auth, remember ? browserLocalPersistence : browserSessionPersistence);
+
+        if (mode === 'login') {
+          await signInWithEmailAndPassword(auth, email, password);
+          showSuccess('✓ Signed in successfully!');
+        } else {
+          await createUserWithEmailAndPassword(auth, email, password);
+          showSuccess('✓ Account created! You are now signed in.');
+        }
+
+        setTimeout(closeModal, 1200);
+      } catch (err) {
+        const messages = {
+          'auth/invalid-email': 'Invalid email address.',
+          'auth/user-disabled': 'This account has been disabled.',
+          'auth/user-not-found': 'No account found with this email.',
+          'auth/wrong-password': 'Incorrect password.',
+          'auth/invalid-credential': 'Invalid email or password.',
+          'auth/email-already-in-use': 'An account with this email already exists.',
+          'auth/weak-password': 'Password is too weak. Use at least 6 characters.',
+          'auth/too-many-requests': 'Too many attempts. Please try again later.',
+          'auth/network-request-failed': 'Network error. Check your connection.',
+          'auth/operation-not-allowed': 'Email/Password sign-in is not enabled in Firebase Console.',
+        };
+        showError(messages[err.code] || err.message || 'Authentication failed.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = mode === 'login' ? 'Sign In' : 'Create Account';
+      }
     });
 
-    document.getElementById('forgotLink').addEventListener('click', (e) => {
-      e.preventDefault();
-      alert('Please contact the institute administration to reset your password.');
+    // Logout
+    logoutBtn.addEventListener('click', async () => {
+      if (!isConfigured) return;
+      try {
+        await signOut(auth);
+      } catch (err) {
+        console.error(err);
+      }
     });
 
-    document.getElementById('registerLink').addEventListener('click', (e) => {
+    // Forgot password
+    document.getElementById('forgotLink').addEventListener('click', async (e) => {
       e.preventDefault();
-      alert('New accounts are created by the institute administration. Please contact the office.');
+      if (!isConfigured) {
+        showError('Firebase is not configured yet.');
+        return;
+      }
+      const email = document.getElementById('email').value.trim();
+      if (!email) {
+        showError('Enter your email above, then click Forgot password.');
+        return;
+      }
+      try {
+        await sendPasswordResetEmail(auth, email);
+        showSuccess('Password reset email sent. Check your inbox.');
+      } catch (err) {
+        showError(err.message || 'Could not send reset email.');
+      }
     });
   </script>
 </body>
